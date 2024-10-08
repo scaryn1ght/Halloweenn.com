@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    console.log("JavaScript carregado");
+    console.log("JavaScript carregado"); // Verificação se o JS está carregado
 
     // Adiciona o evento de clique ao botão "Saiba mais"
     document.querySelector('.btn[href="#info"]').addEventListener('click', function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Previne o comportamento padrão do link
         const infoSection = document.querySelector('#info');
         if (infoSection) {
-            infoSection.scrollIntoView({ behavior: 'smooth' });
+            infoSection.scrollIntoView({ behavior: 'smooth' }); // Rola suavemente para a seção de informações
         } else {
             console.log("Seção de informações não encontrada");
         }
@@ -14,10 +14,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Adiciona o evento de clique ao botão "Comprar Ingressos"
     document.querySelector('.btn[href="#ingressos"]').addEventListener('click', function (event) {
-        event.preventDefault();
+        event.preventDefault(); // Previne o comportamento padrão do link
         const ingressosSection = document.querySelector('#ingressos');
         if (ingressosSection) {
-            ingressosSection.scrollIntoView({ behavior: 'smooth' });
+            ingressosSection.scrollIntoView({ behavior: 'smooth' }); // Rola suavemente para a seção de ingressos
         } else {
             console.log("Seção de ingressos não encontrada");
         }
@@ -28,18 +28,18 @@ function toggleDetails(elementId) {
     const details = document.getElementById(elementId);
     if (!details) {
         console.error(`Elemento com ID ${elementId} não encontrado.`);
-        return;
+        return; // Se o elemento não existir, sai da função
     }
-
+    
     const arrow = details.previousElementSibling.querySelector(".arrow");
 
     if (details.classList.contains("details-hidden")) {
         details.classList.remove("details-hidden");
-        details.classList.add("details-visible");
+        details.classList.add("details-visible"); // Adiciona a classe para mostrar
         arrow.textContent = "˄"; // Indica que está visível
     } else {
         details.classList.add("details-hidden");
-        details.classList.remove("details-visible");
+        details.classList.remove("details-visible"); // Adiciona a classe para ocultar
         arrow.textContent = "˅"; // Indica que está oculto
     }
 }
@@ -82,16 +82,16 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
         console.error("Elemento 'beerPongItem' não encontrado.");
     }
+// Adicionando o botão flutuante de Instagram
+const instagramButton = document.createElement("a");
+instagramButton.href = "https://www.instagram.com/terceiro_if/";
+instagramButton.target = "_blank";
+instagramButton.classList.add("instagram-float");
+instagramButton.innerHTML = `
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="instagram-icon" aria-label="Siga-nos no Instagram">
+`;
+document.body.appendChild(instagramButton);
 
-    // Adicionando o botão flutuante de WhatsApp
-    const whatsappButton = document.createElement("a");
-    whatsappButton.href = "https://wa.me/5575999203956";
-    whatsappButton.target = "_blank";
-    whatsappButton.classList.add("whatsapp-float");
-    whatsappButton.innerHTML = `
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="whatsapp-icon" aria-label="Converse conosco pelo WhatsApp">
-    `;
-    document.body.appendChild(whatsappButton);
 
     // Adicionando a contagem regressiva para o evento
     const countdown = document.createElement("div");
@@ -121,14 +121,14 @@ document.addEventListener("DOMContentLoaded", function() {
     setInterval(updateCountdown, 1000);
 });
 
-// Estilo para o botão flutuante e animações
+// Adicionando o estilo do botão flutuante
 const style = document.createElement('style');
 style.innerHTML = `
     .whatsapp-float {
         position: fixed;
         bottom: 20px;
         right: 20px;
-        background-color: #25D366;
+        background-color: #25D366; /* Cor de fundo do WhatsApp */
         border-radius: 50%;
         padding: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -140,11 +140,29 @@ style.innerHTML = `
         transform: scale(1.1);
     }
 
-    .whatsapp-icon {
+    .instagram-float {
+        position: fixed;
+        bottom: 90px; /* Distância do botão do WhatsApp */
+        right: 20px;
+        background-color: #E1306C; /* Cor de fundo do Instagram */
+        border-radius: 50%;
+        padding: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        transition: transform 0.3s;
+    }
+
+    .instagram-float:hover {
+        transform: scale(1.1);
+    }
+
+    .whatsapp-icon,
+    .instagram-icon {
         width: 50px;
         height: 50px;
     }
 
+    /* Adicionando novas classes para animações */
     .details-visible {
         opacity: 1;
         transition: opacity 0.3s ease-in;
@@ -155,6 +173,7 @@ style.innerHTML = `
         transition: opacity 0.3s ease-out;
     }
 
+    /* Efeito para lista de entretenimento */
     .entretenimento ul li {
         transition: background-color 0.3s;
     }
@@ -163,6 +182,7 @@ style.innerHTML = `
         background-color: #ff914d;
     }
 
+    /* Estilos adicionais para a contagem regressiva */
     #countdown {
         animation: pulse 1.5s infinite;
     }
@@ -179,4 +199,3 @@ style.innerHTML = `
         }
 `;
 document.head.appendChild(style);
-
